@@ -33,10 +33,12 @@ services:
     container_name: loginJava
     image: openjdk:7
     depends_on:
-    - db
+      - db
     volumes:
-    - /var/lib/jenkins/workspace/docker/target:/usr/src/myapp 
+      - /var/lib/jenkins/workspace/docker/target:/usr/src/myapp 
     working_dir: /usr/src/myapp
+    ports:
+      -"7676:7676"
     command: bash -c "java -jar netty-example-1.0-SNAPSHOT.jar"
 networks:
   sonarnet:
