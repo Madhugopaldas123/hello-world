@@ -12,3 +12,4 @@ COPY target/*.jar /work/application.jar
 
 EXPOSE 3434
 CMD ["java", "-jar", "application.jar"]
+CMD ["bundle",  "exec", "rails", "server", "-e", "production"]
