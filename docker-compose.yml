@@ -32,10 +32,6 @@ services:
   java:
     container_name: loginJava
     image: openjdk:7
-    expose:
-      -7676
-    ports:
-      -"7676:8080"
     depends_on:
       - db
     volumes:
