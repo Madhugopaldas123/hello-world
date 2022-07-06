@@ -10,5 +10,5 @@ RUN microdnf install --nodocs java-11-openjdk-headless && microdnf clean all
 WORKDIR /work/
 COPY target/*.jar /work/application.jar
 
-EXPOSE 3223
+EXPOSE 3434
 CMD ["java", "-jar", "application.jar"]
