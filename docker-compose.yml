@@ -38,7 +38,7 @@ services:
       - /var/lib/jenkins/workspace/docker/target:/usr/src/myapp 
     working_dir: /usr/src/myapp
     ports:
-      -"7676:7676"
+      -"7676:8080"
     command: bash -c "java -jar netty-example-1.0-SNAPSHOT.jar"
 networks:
   sonarnet:
