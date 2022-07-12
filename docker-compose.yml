@@ -28,8 +28,10 @@ services:
     volumes:
       - postgresql:/var/lib/postgresql
       - postgresql_data:/var/lib/postgresql/data
-   myapp:
+   java:
      image: openjdk:8
+     networks:
+       - sonarnet
      container_name: "myapp"
      restart: always
      ports:
