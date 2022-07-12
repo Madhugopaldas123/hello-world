@@ -18,8 +18,6 @@ services:
       - sonarqube_data:/opt/sonarqube/data
       - sonarqube_extensions:/opt/sonarqube/extensions
       - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
-      -sonarqube_results:/var/lib/jenkins/workspace/task4-docker-compose/target/hello-world-docker-1.0-SNAPSHOT.jar
-
   db:
     image: postgres:13.4
     networks:
@@ -30,15 +28,15 @@ services:
     volumes:
       - postgresql:/var/lib/postgresql
       - postgresql_data:/var/lib/postgresql/data
-  java:
-    container_name: loginJava
-    image: openjdk:7
-    depends_on:
-      - db
+   myapp:
+    image: openjdk:8
+    container_name: "myapp"
+    restart: always
+    ports:
+      - 8091:8091
     volumes:
-      - /var/lib/jenkins/workspace/docker/target:/usr/src/myapp 
-    working_dir: /usr/src/myapp
-    command: bash -c "java -jar hello-world-docker-1.0-SNAPSHOT.jar"
+      - "/var/lib/jenkins/workspace/task4/target:/usr/src/myapp"
+    command: ['java', '-jar', 'hello-world-docker-1.0-SNAPSHOT.jar']
 networks:
   sonarnet:
 
